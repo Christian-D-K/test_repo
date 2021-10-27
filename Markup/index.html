@@ -1,0 +1,408 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+
+  .container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .header {
+    height: 104px;
+    background-color: #A43F3F;
+    /* コンテンツの量に合わせてボックス化する */
+    display: flex;
+    /* ボックス化したアイテムの操作タイプを決める　縦：column 横：row */
+    flex-direction: column;
+    /* 横方向のアラインを決める */
+    /* 左づめ：flex-start 右づめ：flex-end 中央揃え：center */
+    justify-content: flex-end;
+    /* こども要素が、親要素を基準にポジション適用できるように定義する */
+    position: relative;
+  }
+
+  .header-title {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-weight: normal;
+    /* 親（.header)を基準に決まる */
+    text-align: center;
+  }
+
+  .header-right {
+    /* 親（.header)を基準に決まる */
+    /* absoluteは絶対値、親でrelativeが指定されている場合、親の中で絶対値となる */
+    position: absolute;
+    right: 19px;
+    bottom: 8px;
+    font-size: 12px;
+    line-height: 24px;
+    border: 0;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.7)
+  }
+
+  .memo-list-item {
+    display: flex;
+    flex-direction: row;
+    /* 横方向のアラインを決める */
+    /* flexでボックス化されたアイテム同士の間にスペースを挿入する */
+    justify-content: space-between;
+    /* 縦方向のアラインを決める */
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 19px;
+    padding-right: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .memo-list-item-title {
+    font-size: 16px;
+    line-height: 32px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+
+  .memo-list-item-date{
+    font-size: 12px;
+    line-height: 16px;
+    color: #848484;
+  }
+
+  .memo-list-item-delete {
+    border: 0;
+    background-color: transparent;
+    color: #B0B0B0;
+    font-size: 20px;
+  }
+
+  .circle-button {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    background-color: #A43F3F;
+    border-radius: 32px;
+    border: 0;
+    color: #ffffff;
+    font-size: 40px;
+    box-shadow: 0 8px 20px rgba(77, 7, 30, 0.25);
+
+  }
+
+  .scroll {
+    /* スクロールが発生する要素において、そのエリアを指定する */
+    height: calc(100% - 104px);
+    /* 隠れている部分（スクロールで表示される部分）の振る舞いを決める */
+    /* yは縦スクロール、xは横スクロール */
+    overflow-y: scroll;
+  }
+
+</style>
+
+<body>
+
+  <div class="container">
+    <!-- Header -->
+      <div class="header">
+        <div>
+          <h1 class="header-title">Memo App</h1>
+          <button class="header-right">ログアウト</button>
+        </div>
+      </div>
+
+
+    <!-- Scroll -->
+    <div class="scroll">
+      <!-- MemoList -->
+      <div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+
+
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+        <!-- MemoListItem -->
+        <div class="memo-list-item">
+          <div>
+            <h3 class="memo-list-item-title">買い物リスト</h3>
+            <time class="memo-list-item-date">2020年12月24日 10:00</time>
+          </div>
+          <div>
+            <button class="memo-list-item-delete">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Addtion Button -->
+    <button class="circle-button" onclick="sayHello()">
+      +
+    </button>
+
+  </div>
+
+  <script>
+    function sayHello() {
+      window.alert('Hello');
+    }
+  </script>
+</body>
+
+</html>
