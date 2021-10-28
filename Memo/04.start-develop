@@ -1,0 +1,52 @@
+開発の開始
+
+1. Gitの変更履歴を作成する
+## 1.プロジェクトフォルダ内で、gitの初期化　※Expoが勝手にやってくれる
+git init
+
+## 2.開発に必要なベースフォルダを作成する
+  ## src/ : 全てのソースが格納される
+  ## src/components/ : 画面の部品のソースが格納
+  ## src/screens/ : 画面のソースが格納
+
+## 3.ベースフォルダをgitの追跡対象にする
+ファイルを新規に作成：
+  src/components/.gitkeep
+  src/screens/.gitkeep
+
+## 4.githubでリポジトリを作成する
+## 5.作成してできたURLを使って、git remoteに登録する
+git remote add origin https://github.com/Christian-D-K/%リポジトリ名%.git
+## 6.add -> commit -> pushまで行う
+git push origin master
+
+
+2. ESLintの導入
+## 1.最新のESLintバージョンを確認
+npm show eslint
+
+## 2.ESlintをインストール　（開発用の依存と明示するためにオプションを忘れずに）
+npm install --save-dev eslint@%バージョン%
+
+## 3.ES Lintの初期化を行う (npxなので注意)
+npx eslint --init
+
+## 4.ESLintのチェックレベルを設定（syntax or syntax & file problem or syntax & file problem & enforce code style)
+一番厳しいのが理想
+
+## 5.言語を選択
+今回はJS, React, nonTypescript
+## 6.実行環境をNodeに選択
+## 7.ESlint Styleを選択（popular or your style or Inspect）
+  ## populerを選ぶとどの企業のスタイルか選択する( Airbnb or Standard or Google)
+今回はpopuler, Airbnb
+## 8.configの形式を選択(JS, YAML, JSON)
+今回はJSON
+## 9.最終確認でYESを選択
+## 10.ESLintをVScodeの拡張機能からインストール（一度だけ）
+## 11.App.jsが注意されるので、App.jsxへ
+## 12.不要な警告を無視する設定を行う
+  ## 12-2. .eslintrc.jsonファイルを編集 -> rules オブジェクトに「"no-use-before-defined" : 0」を追加
+    ## ESLintのエラーリンクから、rulesの警告無視設定方法を確認できる
+  ## 12-3. styleの構造が、Expoでは文字列だが、ESlintルールでは違反しているので一行だけESLintの警告を無視する
+    ## 警告のすぐ上の行に「{/* eslint-disable */}」を入力

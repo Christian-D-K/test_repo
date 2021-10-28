@@ -1,0 +1,55 @@
+Expo 環境構築
+
+#1. NVS（Node.jsのバージョン管理ツール）のインストール
+export NVS_HOME="$HOME/.nvs"
+git clone https://github.com/jasongin/nvs "$NVS_HOME"
+. "$NVS_HOME/nvs.sh" install
+Downloading bootstrap node from https://nodejs.org/dist/v12.22.2/node-v12.22.2-darwin-x64.tar.xz
+
+#2. Node.jsのバージョン追加
+nvs add 14.15.0
+
+#3. Node.jsの使用バージョンを宣言
+nvs use 14.15.0
+
+#4. 最新のExpoバージョンを確認
+npm show expo-cli
+
+#5. 最新のExpoをインストール
+npm install -g expo-cli@%version%
+
+#6. Expoのバージョン確認
+expo --verion # -v の省略は不可
+
+command集
+
+Expo
+#ExpoへLogin
+expo login
+
+#ExpoからLogout
+expo logout
+
+#Expoへログインしているか確認 Who am I
+expo whoami
+
+npm
+# 最新のExpoバージョンを確認
+npm show expo-cli
+
+# 最新のExpoをインストール
+npm install -g expo-cli@3.28.5
+
+NVS
+# NVS version確認
+nvs -v
+
+# Node.jsのバージョン追加
+nvs add 14.15.0
+
+# NVSで管理されているNode.jsのバージョン一覧を表示
+nvs ls
+
+# NVSに新しいNode.jsのバージョンを追加
+nvs use 14.15.0
+

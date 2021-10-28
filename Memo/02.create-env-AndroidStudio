@@ -1,0 +1,50 @@
+# 1.Android studio ダウンロード、起動
+
+# 2.Prefarance から System Setting を開く
+
+# 3.Android SDK を開く
+
+# 4.SDK tools タブを開く
+
+# 5.Show Package Details にチェックを入れる
+
+# 6.SDK Build Tools のバージョンを選択（必要であれば DL）- > Apply を押下
+
+# 7.Android SDK Location のテキストボックスからパスをコピー
+
+# 8.vim から環境設定を開く
+## bash の場合
+vim ~/.zshrc
+## zsh の場合
+vim ~/.bash_profile
+
+# 9.Android Studio のパスを通す
+export ANDROID_SDK_ROOT=/Users/kasaharakurisu/Library/Android/sdk
+export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
+export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+
+# 10.パスが通ってるか確かめる
+echo $ANDROID_SDK_ROOT
+echo $PATH
+
+# 11.emulatorの操作プログラムが操作可能か確認(パスが設定されているか確認)
+adb --version
+
+# 12.Android Studioの more actions から「AVD Manager」を開く
+# 13.Your Virtual Devicesが開く（新しい端末が必要であれば、下部の「＋」から追加）
+
+## 端末追加する場合
+# 1.端末一覧から端末を選択し、NEXTを押下
+# 2.OSを選択（現状10.0が安定。最初はDownloadが必要）
+# 3.端末名を決める
+
+# 14.端末一覧から再生ボタンを押下する
+
+## commandから起動
+# 1.使える端末名一覧を表示
+emulator -list-avds
+
+  ## 通常起動
+  emulator @%端末名%
+  ## インターネット接続起動
+  emulator @%端末名% -dns-server 8.8.8.8

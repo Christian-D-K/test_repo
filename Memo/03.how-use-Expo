@@ -1,0 +1,121 @@
+1. Expo 新規プロジェクトの作成
+
+# 1. 使用するNode.jsのバージョンの確認、切り替え
+
+  # Node.jsのバージョン確認
+  node --version
+  # Expoのバージョン確認(-v省略不可)
+  expo --version
+
+  ## 現在のNode.jsで開発を進める場合 -> # 2.へ
+  ## 現在のNode.jsで開発を進めない場合
+    # Node.jsのバージョン追加
+    nvs add %バージョン%
+    # NVSで管理されているNode.jsのバージョン一覧を表示
+    nvs ls
+    # NVSに新しいNode.jsのバージョンを追加
+    nvs use %バージョン%
+
+  ## Expoがインストールされていない場合
+    # 対象Node.jsバージョンにインストール
+    npm install -g expo-cli
+
+# 2.プロジェクトの作成
+expo init --npm
+
+# 3.アプリケーションネームを設定する
+
+# 4.テンプレートメニューが表示されるので、選択する（今回は Managed workflowのblankを選択）
+
+# 5.Your priject is readyが表示されることを確認
+
+  # ls commandでプロジェクトができていることを確認
+  ls
+
+# 6.プロジェクトへ移動
+cd %アプリケーション名%
+
+# 7.移動先でExpoをスタートさせる
+expo start
+
+# 8.Expoの開発ツールがブラウザで起動（もし起動しない場合は、ターミナル上で「d」を押下
+
+# 9.iOSシミュレータを起動するために、ナビゲーションペインの「Run on iOS simulator」を押下、起動を待つ
+  ## 起動しない場合
+    # Xcodeを起動 -> メニュー -> Open Developer Tool -> simulator で立ち上げる
+    # もう一度「Run on iOS simulator」を押下
+
+# 10.Androidシミュレータを起動するために、ターミナルから新しいタブを開く
+⌘ + t
+  # 10-2.コマンドで起動するエミュレータ一覧を表示する
+  emulator -list-avds
+  # 10-3. 端末を選び起動する
+  emulator @%端末名% -dns-server 8.8.8.8
+  # 10-4. Expoのナビゲーションペインにある「Run on Android device/emulator」を押下
+  # 10-5.emu画面で「Got it」を押下 -> メニューを閉じる
+
+# 11.実機で確認する場合
+ # 11-2. カメラアプリを起動、ナビゲーションペインのQRコードを読み込む
+ # 11-3. リンクを押下する
+
+## もしemu/simulator内のExpo appがうまく動かない場合
+  # 1.emu/simulatorからExpo appを削除
+  # 2.# 9.# 10.の手順でもう一度立ち上げる
+
+## emu/simulatornの便利なコマンド
+  # メニュー表示
+    ## iosの場合
+    ⌘ + d
+    ## androidの場合
+    ⌘ + m
+  # 再読み込みさせる
+    ## iosの場合
+    ⌘ + r
+    ## androidの場合
+    ⌘ + rr
+
+2. Expoツアー
+
+Expoでアプリを共有する
+# 1.Expoを発行するために、ターミナルでExpoにログイン
+  ## ログインを確かめる
+  expo whoami
+  ## ログインしていな場合
+  expo login
+# 2.Expoのアプリを公開する
+expo publish
+
+# 3.URlが発行されるので、ブラウザで確認する
+# 4.QRコードを読み込むことで、Expoアプリ内で作成アプリが作動する（iPhoneの場合は、ExpoとExpoアプリで同一アカウントでないと確認できない）
+  ## iPhoneで確認するためには共同のExpoアカウントを発行して、そこにログインしてもらう必要がある
+# 5.publishのセキュリティを強めるために設定を行う (Expoのポータル上で公開されなくなる)
+  # 5-2.プロジェクト配下のapp.jsonを開く
+  # 5-3.expoオブジェクト直下に「"privacy":"unlisted"」を追加
+  {
+    "expo": {
+      "name": "MemoApp",
+      "slug": "MemoApp",
+      "version": "1.0.0",
+      "privacy": "unlisted",
+      .
+      .
+      .
+    }
+ }
+
+Expoのファイル構成
+  デフォルト
+## .expo/ .expo-shared/ : Expoの情報が入っている。基本触らない
+## assets : 配下に画像を配置する
+## node_modules : JSライブラリが格納、触らない
+## .gitignor : gitの追跡を免れるファイルを定義する
+## App.js : アプリ本体
+## app.json : アプリの設定ファイル、ストアへのリリースで設定
+## babel.config.js : 今は無視
+## package-lock.json : package.jsonの詳細情報、ほぼ触らない
+## package.json : node_modules内の依存関係が入っている。package.jsonを編集することで、
+  ## node_modulesのライブラリを適応させたりここに新たなライブラリを入れたりする
+  ## npm installコマンドはこのpackage.jsonの中身を見て必要なモジュールやバージョンをDLするようになっている
+    ## scripts : コマンドを省略して登録できる
+
+
