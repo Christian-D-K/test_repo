@@ -1,0 +1,43 @@
+Expo - Libraries
+# Default
+
+# Additional
+  ## 1.Vactor-Icons
+    ## 主要なアイコンを提供するライブラリー
+    npm show @expo/vector-icons #version確認
+    npm install @expo/vector-icons@%バージョン%
+
+ReactNative - Libraries
+# Default
+  ## 1.Core componants
+    ## View: div  Text: p StyleSheet: css  TouchableOpacity: button  TextInput: input
+    import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+  ## 2.Prop Types
+    ## Eslintの制約で簡易的な型指定を行うフレームワーク
+    ## string: 文字列  bool: 真偽値  shape: Object
+    ## isRequiredは値の格納を約束する宣言。不確定な場合は付けずに、defaultに初期を設定
+    import { string, bool, shape } from 'prop-types';
+
+    ## How use
+    Hello.propTypes = {
+      children: string.isRequired,
+      foo: bool,
+      style: shape(),
+    };
+
+    Hello.defaultProps = {
+      foo: false,
+      style: null,
+    };
+
+# Additional
+  ## 1.React Navigation
+    ##画面遷移を担当する
+    npm show @react-navigation/native #version確認
+    npm install @react-navigation/native@%バージョン%
+    expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view #依存関係のインストール
+    npm install @react-navigation/stack #スタックナビゲーションのインストール
+
+React - Libraries
+# Default
+# Additional
